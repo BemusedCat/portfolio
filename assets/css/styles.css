@@ -454,3 +454,105 @@ img{
     right: 10%;
   }
 }
+
+
+/* =====svg===== */
+
+#comp-top-right, #comp-top-left, #comp-middle, #comp-bottom-left, #comp-bottom-right{
+
+  animation: slidein 3s ease-in-out infinite alternate;
+  transform-origin: center;
+  transform-box: fill-box;
+
+}
+
+
+#middle-line, #bottom-left-line,#bottom-right-line{
+
+  animation: lines 1s ease-in-out infinite alternate;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+#top-left-line{
+
+  animation: lines-left 1s ease-in-out infinite alternate;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+#top-right-line{
+
+  animation: lines-right 1s ease-in-out infinite alternate;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+#hand{
+
+      animation: hand_ani 0.8s ease-in-out infinite alternate;
+      transform-origin: top left;
+      transform-box: fill-box;
+      
+  
+  }
+  
+
+@keyframes slidein {
+  from {
+   transform: rotateX(20deg);
+  }
+
+  to {
+      transform: rotateX(-20deg);
+  }
+}
+@keyframes lines-right {
+  from {
+   transform: translate(0%,0%);
+  }
+
+  to {
+      transform: translate(10%,200%);
+  }
+}
+
+@keyframes lines-left {
+  from {
+   transform: translate(0%,0%);
+  }
+
+  to {
+      transform: translate(-10%,200%);
+  }
+}
+
+@keyframes lines {
+  from {
+   transform: translateY(0%);
+  }
+
+  to {
+      transform: translateY(250%);
+  }
+}
+
+
+
+@keyframes hand_ani {
+  from {
+   transform: rotateY(0deg) translateX(2%);
+  }
+
+  to {
+      transform: rotateY(20deg) translateX(-2%);
+  }
+}
+
+.skills_svg{
+  
+  width: 150%;
+  padding-top: 20%;
+  padding-left: 20%;
+ 
+  
+}
