@@ -5,8 +5,8 @@ import { SectionTitle } from '../ui';
 const experiences = [
   {
     company: 'CrowdStrike',
-    logo: '🦅',
-    color: 'bg-red-500',
+    logo: 'https://logo.clearbit.com/crowdstrike.com',
+    color: 'bg-red-600',
     type: 'Full-time',
     threshold: 0.15,
     roles: [
@@ -20,8 +20,8 @@ const experiences = [
   },
   {
     company: 'Oracle',
-    logo: '◯',
-    color: 'bg-red-600',
+    logo: 'https://logo.clearbit.com/oracle.com',
+    color: 'bg-red-500',
     type: 'Full-time · 3 yrs 8 mos',
     threshold: 0.4,
     roles: [
@@ -48,8 +48,8 @@ const experiences = [
   },
   {
     company: 'Paytm',
-    logo: '💳',
-    color: 'bg-blue-500',
+    logo: 'https://logo.clearbit.com/paytm.com',
+    color: 'bg-sky-500',
     type: 'Internship',
     threshold: 0.8,
     roles: [
@@ -132,19 +132,6 @@ function RolesTimeline({ roles, scrollYProgress, baseThreshold, skills }) {
 
   return (
     <div className="relative ml-2 pl-8">
-      {/* Roles timeline background */}
-      {hasMultipleRoles && (
-        <>
-          <div className="absolute left-[5px] top-3 w-0.5 bg-gray-200 dark:bg-gray-700" style={{ height: 'calc(100% - 3.5rem)' }} />
-          <motion.div
-            className="absolute left-[5px] top-3 w-0.5 bg-gradient-to-b from-primary to-blue-400 origin-top"
-            style={{
-              scaleY: timelineScale,
-              height: 'calc(100% - 3.5rem)',
-            }}
-          />
-        </>
-      )}
 
       {roles.map((role, roleIndex) => (
         <RoleCard
@@ -206,12 +193,12 @@ function ExperienceCard({ exp, scrollYProgress, isLast }) {
       className={`relative pl-12 ${!isLast ? 'pb-10' : ''}`}
       style={{ opacity, x, scale }}
     >
-      {/* Timeline dot with glow */}
+      {/* Timeline dot with logo */}
       <motion.div
-        className={`absolute left-0 w-8 h-8 rounded-full ${exp.color} flex items-center justify-center text-white text-sm z-10`}
+        className="absolute left-0 w-8 h-8 rounded-full bg-white dark:bg-gray-800 flex items-center justify-center z-10 overflow-hidden border-2 border-gray-200 dark:border-gray-600"
         style={{ boxShadow: dotGlow }}
       >
-        {exp.logo}
+        <img src={exp.logo} alt={exp.company} className="w-6 h-6 object-contain" />
       </motion.div>
 
       {/* Company header */}

@@ -5,7 +5,7 @@ import { SectionTitle } from '../ui';
 const education = [
   {
     institution: 'Georgia Institute of Technology',
-    logo: '🐝',
+    logo: 'https://logo.clearbit.com/gatech.edu',
     color: 'bg-yellow-600',
     degree: 'Master of Science - MS, Computer Science',
     period: 'Aug 2025 - Jul 2027',
@@ -13,7 +13,7 @@ const education = [
   },
   {
     institution: 'National Institute of Technology Agartala',
-    logo: '🎓',
+    logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e6/NIT_Agartala_Logo.svg/220px-NIT_Agartala_Logo.svg.png',
     color: 'bg-blue-700',
     degree: 'Bachelor of Technology - BTech, Electronics and Instrumentation Engineering',
     period: '2018 - 2022',
@@ -22,37 +22,39 @@ const education = [
 ];
 
 function EducationCard({ edu, index, scrollYProgress }) {
-  const baseDelay = 0.2 + (index * 0.25);
+  // Stagger cards but keep both visible - use smaller spacing
+  const baseDelay = 0.1 + (index * 0.25);
 
   // Card flips in from below with rotation
   const y = useTransform(
     scrollYProgress,
-    [baseDelay - 0.15, baseDelay],
-    [100, 0]
+    [baseDelay - 0.1, baseDelay + 0.15],
+    [80, 0]
   );
 
+  // Keep card visible after animation (don't fade out)
   const opacity = useTransform(
     scrollYProgress,
-    [baseDelay - 0.15, baseDelay - 0.05],
+    [baseDelay - 0.1, baseDelay + 0.05],
     [0, 1]
   );
 
   const rotateX = useTransform(
     scrollYProgress,
-    [baseDelay - 0.15, baseDelay],
-    [45, 0]
+    [baseDelay - 0.1, baseDelay + 0.15],
+    [30, 0]
   );
 
   const scale = useTransform(
     scrollYProgress,
-    [baseDelay - 0.15, baseDelay, baseDelay + 0.05],
-    [0.8, 1.05, 1]
+    [baseDelay - 0.05, baseDelay + 0.1, baseDelay + 0.2],
+    [0.9, 1.03, 1]
   );
 
   // Glow effect on the icon
   const glowIntensity = useTransform(
     scrollYProgress,
-    [baseDelay - 0.05, baseDelay + 0.05, baseDelay + 0.15],
+    [baseDelay, baseDelay + 0.15, baseDelay + 0.3],
     [0, 1, 0.3]
   );
 
@@ -70,9 +72,9 @@ function EducationCard({ edu, index, scrollYProgress }) {
     >
       <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700">
         <div className="flex items-start gap-4">
-          {/* Institution logo/icon */}
+          {/* Institution logo */}
           <motion.div
-            className={`w-14 h-14 rounded-xl ${edu.color} flex items-center justify-center text-2xl shrink-0`}
+            className="w-14 h-14 rounded-xl bg-white dark:bg-gray-700 flex items-center justify-center shrink-0 overflow-hidden p-2"
             style={{
               boxShadow: useTransform(
                 glowIntensity,
@@ -80,7 +82,7 @@ function EducationCard({ edu, index, scrollYProgress }) {
               ),
             }}
           >
-            {edu.logo}
+            <img src={edu.logo} alt={edu.institution} className="w-full h-full object-contain" />
           </motion.div>
 
           <div className="flex-1">
