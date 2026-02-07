@@ -12,6 +12,7 @@ export default function Input({
     p-4 rounded-lg border-2 border-secondary
     outline-none mb-8
     focus:border-primary transition-colors
+    dark:bg-gray-800 dark:border-gray-600 dark:text-white dark:placeholder-gray-400
   `;
 
   const Component = as === 'textarea' ? 'textarea' : 'input';

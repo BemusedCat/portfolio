@@ -40,7 +40,7 @@ export default function SocialLinks({
           target="_blank"
           rel="noopener noreferrer"
           className={`
-            ${sizeClasses} text-secondary
+            ${sizeClasses} text-secondary dark:text-white
             transition-colors duration-300
             hover:text-primary
           `}

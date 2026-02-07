@@ -8,7 +8,7 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-secondary text-white text-center font-semibold py-8">
+    <footer className="bg-secondary dark:bg-gray-800 text-white text-center font-semibold py-8">
       <h2 className="text-3xl mb-8">Abhigyan</h2>
       <SocialLinks
         links={socialLinks}
