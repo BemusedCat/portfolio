@@ -28,14 +28,15 @@ export default function About() {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          <h3 className="text-lg font-semibold mb-4">
+          <h3 className="text-lg font-semibold mb-4 dark:text-white">
             I'm Abhigyan
           </h3>
-          <p className="leading-relaxed">
-            I am an aspiring software engineer, currently studying Electronics
-            and Instrumentation Engineering at National Institute of Technology,
-            Agartala. I'm passionate about web development, design, and creating
-            meaningful digital experiences.
+          <p className="leading-relaxed dark:text-gray-300">
+            I am a Software Engineer II at CrowdStrike, specializing in CI/CD pipelines
+            and UI infrastructure. Previously at Oracle, I am currently pursuing my
+            Master's in Computer Science from Georgia Tech. I bridge the gap between
+            scalable DevOps systems and seamless user experiences, with a focus on
+            observability and AI integration.
           </p>
         </motion.div>
       </div>
