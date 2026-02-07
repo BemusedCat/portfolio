@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ThemeToggle } from '../ui';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -18,45 +19,51 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50 bg-white shadow-[0_1px_4px_rgba(146,161,176,0.15)]">
+    <header className="fixed top-0 left-0 w-full z-50 bg-white dark:bg-gray-900 shadow-[0_1px_4px_rgba(146,161,176,0.15)]">
       <nav className="h-12 md:h-16 flex justify-between items-center max-w-[1220px] mx-auto px-4 md:px-8 font-semibold">
         {/* Logo */}
-        <a href="#" className="text-secondary text-lg">
+        <a href="#" className="text-secondary dark:text-white text-lg">
           Abhigyan
         </a>
 
         {/* Desktop Navigation */}
-        <ul className="hidden md:flex gap-12">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <a
-                href={link.href}
-                onClick={() => handleNavClick(link.href)}
-                className={`
-                  relative text-secondary
-                  hover:after:content-[''] hover:after:absolute
-                  hover:after:w-full hover:after:h-[3px]
-                  hover:after:bg-primary hover:after:left-0 hover:after:top-8
-                  ${activeLink === link.href ?
-                    "after:content-[''] after:absolute after:w-full after:h-[3px] after:bg-primary after:left-0 after:top-8"
-                    : ''
-                  }
-                `}
-              >
-                {link.name}
-              </a>
-            </li>
-          ))}
-        </ul>
+        <div className="hidden md:flex items-center gap-12">
+          <ul className="flex gap-12">
+            {navLinks.map((link) => (
+              <li key={link.href}>
+                <a
+                  href={link.href}
+                  onClick={() => handleNavClick(link.href)}
+                  className={`
+                    relative text-secondary dark:text-white
+                    hover:after:content-[''] hover:after:absolute
+                    hover:after:w-full hover:after:h-[3px]
+                    hover:after:bg-primary hover:after:left-0 hover:after:top-8
+                    ${activeLink === link.href ?
+                      "after:content-[''] after:absolute after:w-full after:h-[3px] after:bg-primary after:left-0 after:top-8"
+                      : ''
+                    }
+                  `}
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <ThemeToggle />
+        </div>
 
-        {/* Mobile Menu Toggle */}
-        <button
-          className="md:hidden text-secondary text-2xl cursor-pointer"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
-          <i className={`bx ${isOpen ? 'bx-x' : 'bx-menu'}`}></i>
-        </button>
+        {/* Mobile: Theme Toggle + Menu Toggle */}
+        <div className="flex items-center gap-4 md:hidden">
+          <ThemeToggle />
+          <button
+            className="text-secondary dark:text-white text-2xl cursor-pointer"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+          >
+            <i className={`bx ${isOpen ? 'bx-x' : 'bx-menu'}`}></i>
+          </button>
+        </div>
 
         {/* Mobile Navigation */}
         <AnimatePresence>
