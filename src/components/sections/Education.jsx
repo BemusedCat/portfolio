@@ -5,7 +5,8 @@ import { SectionTitle } from '../ui';
 const education = [
   {
     institution: 'Georgia Institute of Technology',
-    icon: 'bxs-graduation',
+    icon: '🐝',
+    isEmoji: true,
     color: 'bg-yellow-600',
     degree: 'Master of Science - MS, Computer Science',
     period: 'Aug 2025 - Jul 2027',
@@ -14,6 +15,7 @@ const education = [
   {
     institution: 'National Institute of Technology Agartala',
     icon: 'bxs-school',
+    isEmoji: false,
     color: 'bg-blue-700',
     degree: 'Bachelor of Technology - BTech, Electronics and Instrumentation Engineering',
     period: '2018 - 2022',
@@ -82,7 +84,7 @@ function EducationCard({ edu, index, scrollYProgress }) {
               ),
             }}
           >
-            <i className={`bx ${edu.icon}`}></i>
+            {edu.isEmoji ? edu.icon : <i className={`bx ${edu.icon}`}></i>}
           </motion.div>
 
           <div className="flex-1">
