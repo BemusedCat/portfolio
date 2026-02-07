@@ -44,7 +44,7 @@ export default function HolographicCard({ children, className = '' }) {
   };
 
   if (!isModernView) {
-    return <div className={className}>{children}</div>;
+    return <div className={`p-6 ${className}`}>{children}</div>;
   }
 
   return (
