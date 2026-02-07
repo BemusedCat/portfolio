@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { SectionTitle } from '../ui';
+import useViewMode from '../../hooks/useViewMode';
 
 const education = [
   {
@@ -24,6 +25,7 @@ const education = [
 ];
 
 function EducationCard({ edu, index, scrollYProgress }) {
+  const { isModernView } = useViewMode();
   // Stagger cards but keep both visible - use smaller spacing
   const baseDelay = 0.1 + (index * 0.25);
 
@@ -72,7 +74,11 @@ function EducationCard({ edu, index, scrollYProgress }) {
         transformOrigin: 'bottom center',
       }}
     >
-      <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700">
+      <div className={`rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 ${
+        isModernView
+          ? 'glass glow-border'
+          : 'bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700'
+      }`}>
         <div className="flex items-start gap-4">
           {/* Institution icon */}
           <motion.div
