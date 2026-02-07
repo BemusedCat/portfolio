@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { SectionTitle } from '../ui';
+import useViewMode from '../../hooks/useViewMode';
 
 const experiences = [
   {
@@ -158,6 +159,7 @@ function RolesTimeline({ roles, scrollYProgress, baseThreshold, skills }) {
 }
 
 function ExperienceCard({ exp, scrollYProgress, isLast }) {
+  const { isModernView } = useViewMode();
   const threshold = exp.threshold;
 
   const opacity = useTransform(
@@ -193,27 +195,30 @@ function ExperienceCard({ exp, scrollYProgress, isLast }) {
       className={`relative pl-12 ${!isLast ? 'pb-10' : ''}`}
       style={{ opacity, x, scale }}
     >
-      {/* Timeline dot with icon */}
+      {/* Timeline dot with glow */}
       <motion.div
-        className={`absolute left-0 w-8 h-8 rounded-full ${exp.color} flex items-center justify-center text-white text-base z-10`}
+        className={`absolute left-0 w-8 h-8 rounded-full ${exp.color} flex items-center justify-center text-white text-base z-10 ${isModernView ? 'glow-border' : ''}`}
         style={{ boxShadow: dotGlow }}
       >
         <i className={`bx ${exp.icon}`}></i>
       </motion.div>
 
-      {/* Company header */}
-      <div className="mb-4">
-        <h3 className="text-xl font-bold dark:text-white">{exp.company}</h3>
-        <p className="text-sm text-gray-500 dark:text-gray-400">{exp.type}</p>
-      </div>
+      {/* Card with optional glass effect */}
+      <div className={`${isModernView ? 'glass rounded-xl p-4' : ''}`}>
+        {/* Company header */}
+        <div className="mb-4">
+          <h3 className="text-xl font-bold dark:text-white">{exp.company}</h3>
+          <p className="text-sm text-gray-500 dark:text-gray-400">{exp.type}</p>
+        </div>
 
-      {/* Roles with nested timeline */}
-      <RolesTimeline
-        roles={exp.roles}
-        scrollYProgress={scrollYProgress}
-        baseThreshold={threshold}
-        skills={exp.skills}
-      />
+        {/* Roles with nested timeline */}
+        <RolesTimeline
+          roles={exp.roles}
+          scrollYProgress={scrollYProgress}
+          baseThreshold={threshold}
+          skills={exp.skills}
+        />
+      </div>
     </motion.div>
   );
 }
