@@ -5,7 +5,7 @@ import ProgrammerIllustration from '../svg/ProgrammerIllustration';
 import useIsMobile from '../../hooks/useIsMobile';
 
 const skills = [
-  { name: 'Java & C++', icon: 'bxl-java', percentage: 85 },
+  { name: 'Java & C++', icon: 'bx-code-curly', percentage: 85 },
   { name: 'TypeScript & Modern UI', icon: 'bxl-typescript', percentage: 80 },
   { name: 'Docker & CI/CD Pipelines', icon: 'bxl-docker', percentage: 75 },
   { name: 'OpenTelemetry & Observability', icon: 'bx-pulse', percentage: 70 },
