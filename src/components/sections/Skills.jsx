@@ -3,12 +3,11 @@ import { SectionTitle, SkillBar } from '../ui';
 import ProgrammerIllustration from '../svg/ProgrammerIllustration';
 
 const skills = [
-  { name: 'HTML5', icon: 'bxl-html5', percentage: 95 },
-  { name: 'CSS3', icon: 'bxl-css3', percentage: 85 },
-  { name: 'JavaScript', icon: 'bxl-javascript', percentage: 65 },
-  { name: 'Java', icon: 'bx-code-block', percentage: 65 },
-  { name: 'C/C++', icon: 'bx-code-alt', percentage: 70 },
-  { name: 'Machine Learning', icon: 'bx-line-chart', percentage: 50 },
+  { name: 'Java & C++', icon: 'bx-code-alt', percentage: 85 },
+  { name: 'TypeScript & Modern UI', icon: 'bxl-typescript', percentage: 80 },
+  { name: 'Docker & CI/CD Pipelines', icon: 'bxl-docker', percentage: 75 },
+  { name: 'OpenTelemetry & Observability', icon: 'bx-line-chart', percentage: 70 },
+  { name: 'AI/ML & LLM Integration', icon: 'bx-brain', percentage: 60 },
 ];
 
 export default function Skills() {

@@ -24,7 +24,7 @@ export default function Home() {
           Hi,<br />
           I'm <span className="text-primary">Abhigyan</span><br />
           <Typewriter
-            words={['Web Developer', 'Web Designer', 'Freelancer']}
+            words={['Freelancer', 'Software Engineer', 'Web Developer']}
             period={2000}
           />
         </motion.h1>
