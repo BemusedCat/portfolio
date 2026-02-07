@@ -80,7 +80,7 @@ function EducationCard({ edu, index, scrollYProgress }) {
         <div className="flex items-start gap-4">
           {/* Institution icon */}
           <motion.div
-            className={`w-14 h-14 min-w-[56px] rounded-xl ${edu.color} flex items-center justify-center shrink-0`}
+            className={`w-14 h-14 rounded-xl ${edu.color} flex items-center justify-center text-3xl text-white shrink-0`}
             style={{
               boxShadow: useTransform(
                 glowIntensity,
@@ -88,11 +88,7 @@ function EducationCard({ edu, index, scrollYProgress }) {
               ),
             }}
           >
-            {edu.isEmoji ? (
-              <span className="text-3xl leading-none">{edu.icon}</span>
-            ) : (
-              <i className={`bx ${edu.icon} text-3xl text-white`}></i>
-            )}
+            {edu.isEmoji ? edu.icon : <i className={`bx ${edu.icon}`}></i>}
           </motion.div>
 
           <div className="flex-1">
