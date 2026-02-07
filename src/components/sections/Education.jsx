@@ -77,10 +77,10 @@ function EducationCard({ edu, index, scrollYProgress }) {
       <HolographicCard className={`rounded-xl ${
         !isModernView ? 'shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700' : ''
       }`}>
-        <div className="flex items-start gap-4">
+        <div className="flex items-center gap-4">
           {/* Institution icon */}
           <motion.div
-            className={`w-14 h-14 rounded-xl ${edu.color} flex items-center justify-center text-3xl text-white shrink-0`}
+            className={`w-12 h-12 min-w-[48px] rounded-xl ${edu.color} flex items-center justify-center shrink-0`}
             style={{
               boxShadow: useTransform(
                 glowIntensity,
@@ -88,7 +88,11 @@ function EducationCard({ edu, index, scrollYProgress }) {
               ),
             }}
           >
-            {edu.isEmoji ? edu.icon : <i className={`bx ${edu.icon}`}></i>}
+            {edu.isEmoji ? (
+              <span className="text-2xl leading-none">{edu.icon}</span>
+            ) : (
+              <i className={`bx ${edu.icon} text-2xl text-white`}></i>
+            )}
           </motion.div>
 
           <div className="flex-1">
