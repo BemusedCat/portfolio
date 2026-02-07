@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { SectionTitle } from '../ui';
+import { SectionTitle, HolographicCard, NeonTitle } from '../ui';
 import useViewMode from '../../hooks/useViewMode';
 
 const experiences = [
@@ -203,8 +203,8 @@ function ExperienceCard({ exp, scrollYProgress, isLast }) {
         <i className={`bx ${exp.icon}`}></i>
       </motion.div>
 
-      {/* Card with optional glass effect */}
-      <div className={`${isModernView ? 'glass rounded-xl p-4' : ''}`}>
+      {/* Card with holographic or plain style */}
+      <HolographicCard className="rounded-xl">
         {/* Company header */}
         <div className="mb-4">
           <h3 className="text-xl font-bold dark:text-white">{exp.company}</h3>
@@ -218,12 +218,13 @@ function ExperienceCard({ exp, scrollYProgress, isLast }) {
           baseThreshold={threshold}
           skills={exp.skills}
         />
-      </div>
+      </HolographicCard>
     </motion.div>
   );
 }
 
 export default function Experience() {
+  const { isModernView } = useViewMode();
   const sectionRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -235,7 +236,11 @@ export default function Experience() {
 
   return (
     <section ref={sectionRef} id="experience" className="section bd-container">
-      <SectionTitle>Experience</SectionTitle>
+      {isModernView ? (
+        <NeonTitle>Experience</NeonTitle>
+      ) : (
+        <SectionTitle>Experience</SectionTitle>
+      )}
 
       <div className="max-w-3xl mx-auto relative">
         {/* Main timeline background */}
