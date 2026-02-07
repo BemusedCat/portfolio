@@ -1,6 +1,6 @@
 import { useRef, useState, Suspense, lazy } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Button, SocialLinks, Typewriter, TerminalIntro, SpotifyWidget } from '../ui';
+import { Button, SocialLinks, Typewriter, TerminalIntro, SpotifyWidget, TextScramble } from '../ui';
 import HeroIllustration from '../svg/HeroIllustration';
 import useIsMobile from '../../hooks/useIsMobile';
 import useViewMode from '../../hooks/useViewMode';
@@ -60,7 +60,7 @@ export default function Home() {
             transition={{ duration: 0.8 }}
           >
             Hi,<br />
-            I'm <span className={isModernView ? 'gradient-text' : 'text-primary'}>Abhigyan</span><br />
+            I'm <TextScramble className={isModernView ? 'neon-text' : 'text-primary'}>Abhigyan</TextScramble><br />
             <Typewriter
               words={['Freelancer', 'Software Engineer', 'Web Developer']}
               period={2000}
