@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeToggle, ViewToggle, ScrollProgress } from '../ui';
 
@@ -14,6 +14,32 @@ const navLinks = [
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeLink, setActiveLink] = useState('#home');
+
+  // Scroll spy - detect which section is in view
+  useEffect(() => {
+    const sectionIds = navLinks.map(link => link.href.substring(1));
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveLink(`#${entry.target.id}`);
+          }
+        });
+      },
+      {
+        rootMargin: '-20% 0px -70% 0px', // Trigger when section is in upper portion of viewport
+        threshold: 0,
+      }
+    );
+
+    sectionIds.forEach((id) => {
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleNavClick = (href) => {
     setActiveLink(href);
