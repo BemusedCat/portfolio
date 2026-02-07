@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { SectionTitle } from '../ui';
+import { SectionTitle, HolographicCard, NeonTitle } from '../ui';
 import useViewMode from '../../hooks/useViewMode';
 
 const education = [
@@ -74,10 +74,8 @@ function EducationCard({ edu, index, scrollYProgress }) {
         transformOrigin: 'bottom center',
       }}
     >
-      <div className={`rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 ${
-        isModernView
-          ? 'glass glow-border'
-          : 'bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700'
+      <HolographicCard className={`rounded-xl ${
+        !isModernView ? 'shadow-lg hover:shadow-xl transition-shadow duration-300 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700' : ''
       }`}>
         <div className="flex items-start gap-4">
           {/* Institution icon */}
@@ -113,12 +111,13 @@ function EducationCard({ edu, index, scrollYProgress }) {
             </p>
           </div>
         </div>
-      </div>
+      </HolographicCard>
     </motion.div>
   );
 }
 
 export default function Education() {
+  const { isModernView } = useViewMode();
   const sectionRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -146,7 +145,11 @@ export default function Education() {
           🎓
         </motion.div>
 
-        <SectionTitle>Education</SectionTitle>
+        {isModernView ? (
+          <NeonTitle>Education</NeonTitle>
+        ) : (
+          <SectionTitle>Education</SectionTitle>
+        )}
 
         <div className="max-w-2xl mx-auto space-y-6">
           {education.map((edu, index) => (
