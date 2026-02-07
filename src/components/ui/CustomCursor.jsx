@@ -14,6 +14,7 @@ export default function CustomCursor() {
 
     const handleMouseMove = (e) => {
       setPosition({ x: e.clientX, y: e.clientY });
+      setIsVisible(true); // Show cursor on first move
     };
 
     const handleMouseEnter = () => setIsVisible(true);
