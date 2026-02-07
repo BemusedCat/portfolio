@@ -168,6 +168,149 @@
   100% { background-position: 0% 50%; }
 }
 
+/* ============================================
+   NEON COLOR SYSTEM - Modern View
+   ============================================ */
+
+:root {
+  --neon-cyan: #00f2fe;
+  --neon-magenta: #ff00ff;
+  --neon-green: #39ff14;
+  --neon-pink: #ff3366;
+  --neon-purple: #bf00ff;
+  --neon-orange: #ff6600;
+}
+
+/* Neon text effect */
+.neon-text {
+  color: var(--neon-cyan);
+  text-shadow:
+    0 0 5px var(--neon-cyan),
+    0 0 10px var(--neon-cyan),
+    0 0 20px var(--neon-cyan),
+    0 0 40px var(--neon-cyan);
+}
+
+.neon-text-magenta {
+  color: var(--neon-magenta);
+  text-shadow:
+    0 0 5px var(--neon-magenta),
+    0 0 10px var(--neon-magenta),
+    0 0 20px var(--neon-magenta),
+    0 0 40px var(--neon-magenta);
+}
+
+.neon-text-green {
+  color: var(--neon-green);
+  text-shadow:
+    0 0 5px var(--neon-green),
+    0 0 10px var(--neon-green),
+    0 0 20px var(--neon-green),
+    0 0 40px var(--neon-green);
+}
+
+/* Neon flicker animation */
+@keyframes neon-flicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow:
+      0 0 5px var(--neon-cyan),
+      0 0 10px var(--neon-cyan),
+      0 0 20px var(--neon-cyan),
+      0 0 40px var(--neon-cyan);
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
+}
+
+.neon-flicker {
+  animation: neon-flicker 3s infinite;
+}
+
+/* Neon pulse animation */
+@keyframes neon-pulse {
+  0%, 100% {
+    text-shadow:
+      0 0 5px var(--neon-cyan),
+      0 0 10px var(--neon-cyan),
+      0 0 20px var(--neon-cyan);
+  }
+  50% {
+    text-shadow:
+      0 0 10px var(--neon-cyan),
+      0 0 20px var(--neon-cyan),
+      0 0 40px var(--neon-cyan),
+      0 0 80px var(--neon-cyan);
+  }
+}
+
+.neon-pulse {
+  animation: neon-pulse 2s ease-in-out infinite;
+}
+
+/* Neon border glow */
+.neon-border {
+  border: 2px solid var(--neon-cyan);
+  box-shadow:
+    0 0 5px var(--neon-cyan),
+    0 0 10px var(--neon-cyan),
+    inset 0 0 5px var(--neon-cyan);
+}
+
+/* Scanline overlay effect */
+.scanlines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.1) 0px,
+    rgba(0, 0, 0, 0.1) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* Chromatic aberration on hover */
+.chromatic-aberration:hover {
+  animation: chromatic 0.3s ease;
+}
+
+@keyframes chromatic {
+  0% { text-shadow: -2px 0 #ff0000, 2px 0 #00ffff; }
+  25% { text-shadow: 2px 0 #ff0000, -2px 0 #00ffff; }
+  50% { text-shadow: -1px 0 #ff0000, 1px 0 #00ffff; }
+  75% { text-shadow: 1px 0 #ff0000, -1px 0 #00ffff; }
+  100% { text-shadow: 0 0 transparent; }
+}
+
+/* Holographic shimmer effect */
+@keyframes holographic {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.holographic {
+  background: linear-gradient(
+    90deg,
+    #ff0000 0%,
+    #ff8000 14%,
+    #ffff00 28%,
+    #00ff00 42%,
+    #00ffff 56%,
+    #0000ff 70%,
+    #8000ff 84%,
+    #ff0080 100%
+  );
+  background-size: 200% 200%;
+  animation: holographic 3s ease infinite;
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
 /* Easter egg party mode */
 .party-mode {
   animation: hue-rotate 2s linear infinite;
