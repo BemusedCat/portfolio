@@ -7,3 +7,4 @@ export { default as Input } from './Input';
 export { default as ThemeToggle } from './ThemeToggle';
 export { default as CustomCursor } from './CustomCursor';
 export { default as LoadingScreen } from './LoadingScreen';
+export { default as ScrollProgress } from './ScrollProgress';

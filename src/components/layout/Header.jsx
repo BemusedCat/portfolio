@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ThemeToggle } from '../ui';
+import { ThemeToggle, ScrollProgress } from '../ui';
 
 const navLinks = [
   { name: 'Home', href: '#home' },
@@ -21,6 +21,8 @@ export default function Header() {
   };
 
   return (
+    <>
+    <ScrollProgress />
     <header className="fixed top-0 left-0 w-full z-50 bg-white dark:bg-gray-900 shadow-[0_1px_4px_rgba(146,161,176,0.15)]">
       <nav className="h-12 md:h-16 flex justify-between items-center max-w-[1220px] mx-auto px-4 md:px-8 font-semibold">
         {/* Logo */}
@@ -101,5 +103,6 @@ export default function Header() {
         </AnimatePresence>
       </nav>
     </header>
+    </>
   );
 }
