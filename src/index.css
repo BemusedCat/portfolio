@@ -12,11 +12,15 @@
     @apply font-poppins text-secondary bg-white;
     @apply dark:bg-gray-900 dark:text-white;
   }
-  /* Hide default cursor on non-touch devices */
-  @media (pointer: fine) {
-    * {
-      cursor: none !important;
-    }
+}
+
+/* Hide default cursor on non-touch devices - must be outside @layer for specificity */
+@media (pointer: fine) {
+  html, body, * {
+    cursor: none !important;
+  }
+  a, button, [data-cursor="pointer"] {
+    cursor: none !important;
   }
 }
 
