@@ -1,6 +1,8 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { SectionTitle, SkillBar } from '../ui';
 import ProgrammerIllustration from '../svg/ProgrammerIllustration';
+import useIsMobile from '../../hooks/useIsMobile';
 
 const skills = [
   { name: 'Java & C++', icon: 'bx-code-alt', percentage: 85 },
@@ -11,8 +13,22 @@ const skills = [
 ];
 
 export default function Skills() {
+  const sectionRef = useRef(null);
+  const isMobile = useIsMobile();
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'end start'],
+  });
+
+  const parallaxY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, isMobile ? -15 : -30]
+  );
+
   return (
-    <section id="skills" className="section bd-container">
+    <section ref={sectionRef} id="skills" className="section bd-container">
       <SectionTitle>Skills</SectionTitle>
 
       <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -40,7 +56,8 @@ export default function Skills() {
         </motion.div>
 
         <motion.div
-          className="hidden md:flex justify-center items-center pt-[15%]"
+          className="hidden md:flex justify-center items-center pt-[15%] will-change-transform"
+          style={{ y: parallaxY }}
           initial={{ opacity: 0, scale: 0.8 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
