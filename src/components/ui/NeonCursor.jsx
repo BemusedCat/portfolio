@@ -59,7 +59,7 @@ export default function NeonCursor() {
       {/* Outer ring - follows with spring delay */}
       <motion.div
         ref={ringRef}
-        className="absolute -translate-x-1/2 -translate-y-1/2"
+        className="absolute -translate-x-1/2 -translate-y-1/2 will-change-transform"
         style={{
           left: ringX,
           top: ringY,
@@ -85,7 +85,7 @@ export default function NeonCursor() {
       {/* Inner dot - follows cursor exactly */}
       <motion.div
         ref={cursorRef}
-        className="absolute -translate-x-1/2 -translate-y-1/2"
+        className="absolute -translate-x-1/2 -translate-y-1/2 will-change-transform"
         style={{
           left: mouseX,
           top: mouseY,
@@ -170,22 +170,6 @@ export default function NeonCursor() {
         ))}
       </motion.div>
 
-      {/* Hover effect ring - appears on clickable elements */}
-      <motion.div
-        className="absolute -translate-x-1/2 -translate-y-1/2 opacity-0"
-        style={{
-          left: ringX,
-          top: ringY,
-        }}
-      >
-        <div
-          className="w-16 h-16 rounded-full border border-magenta-500"
-          style={{
-            borderColor: '#ff00ff',
-            boxShadow: '0 0 15px rgba(255, 0, 255, 0.3)',
-          }}
-        />
-      </motion.div>
     </div>
   );
 }

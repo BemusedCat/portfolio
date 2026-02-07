@@ -1,16 +1,22 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import useViewMode from '../../hooks/useViewMode';
 
 export default function HolographicCard({ children, className = '' }) {
   const { isModernView } = useViewMode();
   const cardRef = useRef(null);
+  const lastUpdate = useRef(0);
   const [rotateX, setRotateX] = useState(0);
   const [rotateY, setRotateY] = useState(0);
   const [glarePosition, setGlarePosition] = useState({ x: 50, y: 50 });
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = useCallback((e) => {
     if (!cardRef.current || !isModernView) return;
+
+    // Throttle to 60fps max
+    const now = Date.now();
+    if (now - lastUpdate.current < 16) return;
+    lastUpdate.current = now;
 
     const rect = cardRef.current.getBoundingClientRect();
     const centerX = rect.left + rect.width / 2;
@@ -29,7 +35,7 @@ export default function HolographicCard({ children, className = '' }) {
     const glareX = ((e.clientX - rect.left) / rect.width) * 100;
     const glareY = ((e.clientY - rect.top) / rect.height) * 100;
     setGlarePosition({ x: glareX, y: glareY });
-  };
+  }, [isModernView]);
 
   const handleMouseLeave = () => {
     setRotateX(0);
@@ -48,6 +54,7 @@ export default function HolographicCard({ children, className = '' }) {
       style={{
         transformStyle: 'preserve-3d',
         perspective: '1000px',
+        willChange: 'transform',
       }}
       animate={{
         rotateX,

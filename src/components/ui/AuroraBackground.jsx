@@ -21,8 +21,8 @@ export default function AuroraBackground() {
             <stop offset="50%" stopColor="#39ff14" stopOpacity="0.15" />
             <stop offset="100%" stopColor="#00f2fe" stopOpacity="0" />
           </linearGradient>
-          <filter id="glow">
-            <feGaussianBlur stdDeviation="20" result="coloredBlur" />
+          <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="8" result="coloredBlur" />
             <feMerge>
               <feMergeNode in="coloredBlur" />
               <feMergeNode in="SourceGraphic" />
