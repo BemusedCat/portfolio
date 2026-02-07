@@ -12,3 +12,4 @@ export { default as TerminalIntro } from './TerminalIntro';
 export { default as EasterEgg } from './EasterEgg';
 export { default as SpotifyWidget } from './SpotifyWidget';
 export { default as ViewToggle } from './ViewToggle';
+export { default as ParticleBackground } from './ParticleBackground';
