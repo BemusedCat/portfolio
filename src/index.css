@@ -9,7 +9,8 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply font-poppins text-secondary;
+    @apply font-poppins text-secondary bg-white;
+    @apply dark:bg-gray-900 dark:text-white;
   }
 }
 
