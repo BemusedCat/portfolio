@@ -11,3 +11,4 @@ export { default as ScrollProgress } from './ScrollProgress';
 export { default as TerminalIntro } from './TerminalIntro';
 export { default as EasterEgg } from './EasterEgg';
 export { default as SpotifyWidget } from './SpotifyWidget';
+export { default as ViewToggle } from './ViewToggle';
