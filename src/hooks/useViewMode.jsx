@@ -3,22 +3,23 @@ import { createContext, useContext, useState, useEffect } from 'react';
 const ViewModeContext = createContext();
 
 export function ViewModeProvider({ children }) {
-  const [isModernView, setIsModernView] = useState(() => {
+  const [isMaximalView, setIsMaximalView] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('portfolio-view-mode');
-      return saved === 'modern';
+      return saved === 'maximal';
     }
     return false;
   });
 
   useEffect(() => {
-    localStorage.setItem('portfolio-view-mode', isModernView ? 'modern' : 'classic');
-  }, [isModernView]);
+    localStorage.setItem('portfolio-view-mode', isMaximalView ? 'maximal' : 'minimal');
+  }, [isMaximalView]);
 
-  const toggleView = () => setIsModernView((prev) => !prev);
+  const toggleView = () => setIsMaximalView((prev) => !prev);
 
+  // Keep isModernView as alias for backward compatibility
   return (
-    <ViewModeContext.Provider value={{ isModernView, toggleView }}>
+    <ViewModeContext.Provider value={{ isMaximalView, isModernView: isMaximalView, toggleView }}>
       {children}
     </ViewModeContext.Provider>
   );

@@ -1,26 +1,15 @@
-import { useRef, useState, Suspense, lazy } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button, SocialLinks, Typewriter, TerminalIntro, SpotifyWidget, TextScramble } from '../ui';
 import HeroIllustration from '../svg/HeroIllustration';
 import useIsMobile from '../../hooks/useIsMobile';
 import useViewMode from '../../hooks/useViewMode';
 
-// Lazy load 3D component for performance
-const Hero3D = lazy(() => import('../3d/Hero3D').then(m => ({ default: m.default })));
-
 const socialLinks = [
   { icon: 'bxl-linkedin', url: 'https://www.linkedin.com/in/abhigyann/', label: 'LinkedIn' },
   { icon: 'bxl-instagram', url: 'https://www.instagram.com/abhigyann22', label: 'Instagram' },
   { icon: 'bxl-github', url: 'https://github.com/BemusedCat', label: 'GitHub' },
 ];
-
-function Hero3DFallback() {
-  return (
-    <div className="w-full h-full min-h-[300px] flex items-center justify-center">
-      <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin" />
-    </div>
-  );
-}
 
 export default function Home() {
   const [terminalComplete, setTerminalComplete] = useState(false);
@@ -97,13 +86,7 @@ export default function Home() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.4 }}
       >
-        {isModernView ? (
-          <Suspense fallback={<Hero3DFallback />}>
-            <Hero3D className="w-full max-w-md md:max-w-lg" />
-          </Suspense>
-        ) : (
-          <HeroIllustration className="w-full max-w-md md:max-w-lg" />
-        )}
+        <HeroIllustration className="w-full max-w-md md:max-w-lg" />
       </motion.div>
     </section>
   );
