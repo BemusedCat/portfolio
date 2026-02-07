@@ -109,6 +109,65 @@
   animation: blink 1s step-end infinite;
 }
 
+/* Animated gradient text */
+.gradient-text {
+  background: linear-gradient(
+    90deg,
+    #4070F4 0%,
+    #71B9EA 25%,
+    #EA9D7D 50%,
+    #71B9EA 75%,
+    #4070F4 100%
+  );
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradient-shift 3s ease infinite;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+  100% { background-position: 0% center; }
+}
+
+/* Glassmorphism effect for modern view */
+.glass {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark .glass {
+  background: rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Glowing border animation */
+.glow-border {
+  position: relative;
+}
+
+.glow-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, #4070F4, #71B9EA, #EA9D7D, #4070F4);
+  background-size: 400% 400%;
+  border-radius: inherit;
+  z-index: -1;
+  animation: glow-rotate 3s ease infinite;
+  opacity: 0.7;
+}
+
+@keyframes glow-rotate {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
 /* Easter egg party mode */
 .party-mode {
   animation: hue-rotate 2s linear infinite;
