@@ -6,3 +6,4 @@ export { default as Typewriter } from './Typewriter';
 export { default as Input } from './Input';
 export { default as ThemeToggle } from './ThemeToggle';
 export { default as CustomCursor } from './CustomCursor';
+export { default as LoadingScreen } from './LoadingScreen';
