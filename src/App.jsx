@@ -20,7 +20,7 @@ function AppContent() {
     <>
       <LoadingScreen onComplete={() => setIsLoaded(true)} />
       <EasterEgg />
-      {isModernView && <AuroraBackground />}
+      {isModernView && !isMobile && <AuroraBackground />}
       {isModernView && showCursorEffects && <CursorTrail />}
       {isModernView && showHeavyEffects && <Scanlines />}
       {showCursorEffects && (isModernView ? <NeonCursor /> : <CustomCursor />)}
