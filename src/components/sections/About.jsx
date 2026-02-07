@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { SectionTitle } from '../ui';
-import aboutImg from '../../assets/img/about.jpg';
+import aboutImg from '../../assets/img/about.png';
 
 export default function About() {
   return (
