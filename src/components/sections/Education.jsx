@@ -5,7 +5,7 @@ import { SectionTitle } from '../ui';
 const education = [
   {
     institution: 'Georgia Institute of Technology',
-    logo: 'https://logo.clearbit.com/gatech.edu',
+    icon: 'bxs-graduation',
     color: 'bg-yellow-600',
     degree: 'Master of Science - MS, Computer Science',
     period: 'Aug 2025 - Jul 2027',
@@ -13,7 +13,7 @@ const education = [
   },
   {
     institution: 'National Institute of Technology Agartala',
-    logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/e/e6/NIT_Agartala_Logo.svg/220px-NIT_Agartala_Logo.svg.png',
+    icon: 'bxs-school',
     color: 'bg-blue-700',
     degree: 'Bachelor of Technology - BTech, Electronics and Instrumentation Engineering',
     period: '2018 - 2022',
@@ -72,9 +72,9 @@ function EducationCard({ edu, index, scrollYProgress }) {
     >
       <div className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700">
         <div className="flex items-start gap-4">
-          {/* Institution logo */}
+          {/* Institution icon */}
           <motion.div
-            className="w-14 h-14 rounded-xl bg-white dark:bg-gray-700 flex items-center justify-center shrink-0 overflow-hidden p-2"
+            className={`w-14 h-14 rounded-xl ${edu.color} flex items-center justify-center text-3xl text-white shrink-0`}
             style={{
               boxShadow: useTransform(
                 glowIntensity,
@@ -82,7 +82,7 @@ function EducationCard({ edu, index, scrollYProgress }) {
               ),
             }}
           >
-            <img src={edu.logo} alt={edu.institution} className="w-full h-full object-contain" />
+            <i className={`bx ${edu.icon}`}></i>
           </motion.div>
 
           <div className="flex-1">
