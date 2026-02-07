@@ -12,6 +12,12 @@
     @apply font-poppins text-secondary bg-white;
     @apply dark:bg-gray-900 dark:text-white;
   }
+  /* Hide default cursor on non-touch devices */
+  @media (pointer: fine) {
+    * {
+      cursor: none !important;
+    }
+  }
 }
 
 @layer components {

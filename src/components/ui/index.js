@@ -5,3 +5,4 @@ export { default as SkillBar } from './SkillBar';
 export { default as Typewriter } from './Typewriter';
 export { default as Input } from './Input';
 export { default as ThemeToggle } from './ThemeToggle';
+export { default as CustomCursor } from './CustomCursor';
