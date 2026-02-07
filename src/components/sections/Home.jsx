@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Button, SocialLinks, Typewriter, TerminalIntro } from '../ui';
+import { Button, SocialLinks, Typewriter, TerminalIntro, SpotifyWidget } from '../ui';
 import HeroIllustration from '../svg/HeroIllustration';
 import useIsMobile from '../../hooks/useIsMobile';
 
@@ -71,6 +71,10 @@ export default function Home() {
             direction="horizontal"
             className="md:flex-row"
           />
+        </div>
+
+        <div className="mt-6">
+          <SpotifyWidget />
         </div>
         </motion.div>
       </div>
