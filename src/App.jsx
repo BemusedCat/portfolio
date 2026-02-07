@@ -3,7 +3,7 @@ import { ThemeProvider } from './hooks/useTheme';
 import { ViewModeProvider } from './hooks/useViewMode';
 import { Header, Footer } from './components/layout';
 import { Home, About, Experience, Education, Skills, Contact } from './components/sections';
-import { CustomCursor, LoadingScreen, EasterEgg, AuroraBackground, FloatingActions, CursorTrail } from './components/ui';
+import { CustomCursor, LoadingScreen, EasterEgg, AuroraBackground, FloatingActions, CursorTrail, CommandPalette } from './components/ui';
 import useViewMode from './hooks/useViewMode';
 
 function AppContent() {
@@ -28,6 +28,7 @@ function AppContent() {
       </main>
       <Footer />
       <FloatingActions />
+      <CommandPalette />
     </>
   );
 }

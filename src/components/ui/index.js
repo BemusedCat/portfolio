@@ -20,3 +20,4 @@ export { default as TextScramble } from './TextScramble';
 export { default as CursorTrail } from './CursorTrail';
 export { default as HolographicCard } from './HolographicCard';
 export { default as ElectricArc } from './ElectricArc';
+export { default as CommandPalette } from './CommandPalette';
