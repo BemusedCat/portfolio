@@ -22,3 +22,4 @@ export { default as HolographicCard } from './HolographicCard';
 export { default as ElectricArc } from './ElectricArc';
 export { default as CommandPalette } from './CommandPalette';
 export { default as Scanlines } from './Scanlines';
+export { default as NeonCursor } from './NeonCursor';

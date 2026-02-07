@@ -3,7 +3,7 @@ import { ThemeProvider } from './hooks/useTheme';
 import { ViewModeProvider } from './hooks/useViewMode';
 import { Header, Footer } from './components/layout';
 import { Home, About, Experience, Education, Skills, Contact } from './components/sections';
-import { CustomCursor, LoadingScreen, EasterEgg, AuroraBackground, FloatingActions, CursorTrail, CommandPalette, Scanlines } from './components/ui';
+import { CustomCursor, LoadingScreen, EasterEgg, AuroraBackground, FloatingActions, CursorTrail, CommandPalette, Scanlines, NeonCursor } from './components/ui';
 import useViewMode from './hooks/useViewMode';
 
 function AppContent() {
@@ -17,7 +17,7 @@ function AppContent() {
       {isModernView && <AuroraBackground />}
       {isModernView && <CursorTrail />}
       {isModernView && <Scanlines />}
-      <CustomCursor />
+      {isModernView ? <NeonCursor /> : <CustomCursor />}
       <Header />
       <main className={`mt-12 md:mt-16 ${isModernView ? 'text-white' : ''}`}>
         <Home />
