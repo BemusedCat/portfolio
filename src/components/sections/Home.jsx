@@ -1,6 +1,8 @@
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button, SocialLinks, Typewriter } from '../ui';
 import HeroIllustration from '../svg/HeroIllustration';
+import useIsMobile from '../../hooks/useIsMobile';
 
 const socialLinks = [
   { icon: 'bxl-linkedin', url: 'https://www.linkedin.com/in/abhigyan-pandey-b6948811a/', label: 'LinkedIn' },
@@ -9,8 +11,23 @@ const socialLinks = [
 ];
 
 export default function Home() {
+  const sectionRef = useRef(null);
+  const isMobile = useIsMobile();
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  });
+
+  const parallaxY = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0, isMobile ? -20 : -50]
+  );
+
   return (
     <section
+      ref={sectionRef}
       id="home"
       className="min-h-[calc(100vh-3rem)] md:min-h-screen grid md:grid-cols-2 gap-4 items-center pt-12 md:pt-0 bd-container"
     >
@@ -48,7 +65,8 @@ export default function Home() {
       </div>
 
       <motion.div
-        className="order-1 md:order-2 flex justify-center items-center"
+        className="order-1 md:order-2 flex justify-center items-center will-change-transform"
+        style={{ y: parallaxY }}
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.4 }}
