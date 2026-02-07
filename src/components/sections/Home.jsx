@@ -1,6 +1,6 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Button, SocialLinks, Typewriter } from '../ui';
+import { Button, SocialLinks, Typewriter, TerminalIntro } from '../ui';
 import HeroIllustration from '../svg/HeroIllustration';
 import useIsMobile from '../../hooks/useIsMobile';
 
@@ -11,6 +11,7 @@ const socialLinks = [
 ];
 
 export default function Home() {
+  const [terminalComplete, setTerminalComplete] = useState(false);
   const sectionRef = useRef(null);
   const isMobile = useIsMobile();
 
@@ -32,6 +33,15 @@ export default function Home() {
       className="min-h-[calc(100vh-3rem)] md:min-h-screen grid md:grid-cols-2 gap-4 items-center pt-12 md:pt-0 bd-container"
     >
       <div className="order-2 md:order-1">
+        {/* Terminal intro - shows before main content */}
+        <TerminalIntro onComplete={() => setTerminalComplete(true)} />
+
+        {/* Main content - appears after terminal */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: terminalComplete ? 1 : 0 }}
+          transition={{ duration: 0.5 }}
+        >
         <motion.h1
           className="text-3xl md:text-6xl font-bold mb-10"
           initial={{ opacity: 0, y: -50 }}
@@ -62,6 +72,7 @@ export default function Home() {
             className="md:flex-row"
           />
         </div>
+        </motion.div>
       </div>
 
       <motion.div
