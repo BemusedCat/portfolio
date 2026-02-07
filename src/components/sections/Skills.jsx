@@ -5,11 +5,11 @@ import ProgrammerIllustration from '../svg/ProgrammerIllustration';
 import useIsMobile from '../../hooks/useIsMobile';
 
 const skills = [
-  { name: 'Java & C++', icon: 'bx-code-alt', percentage: 85 },
+  { name: 'Java & C++', icon: 'bxl-java', percentage: 85 },
   { name: 'TypeScript & Modern UI', icon: 'bxl-typescript', percentage: 80 },
   { name: 'Docker & CI/CD Pipelines', icon: 'bxl-docker', percentage: 75 },
-  { name: 'OpenTelemetry & Observability', icon: 'bx-line-chart', percentage: 70 },
-  { name: 'AI/ML & LLM Integration', icon: 'bx-brain', percentage: 60 },
+  { name: 'OpenTelemetry & Observability', icon: 'bx-pulse', percentage: 70 },
+  { name: 'AI/ML & LLM Integration', icon: 'bx-bot', percentage: 60 },
 ];
 
 export default function Skills() {
