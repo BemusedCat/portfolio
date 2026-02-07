@@ -3,7 +3,7 @@ import { ThemeProvider } from './hooks/useTheme';
 import { ViewModeProvider } from './hooks/useViewMode';
 import { Header, Footer } from './components/layout';
 import { Home, About, Experience, Education, Skills, Contact } from './components/sections';
-import { CustomCursor, LoadingScreen, EasterEgg, ParticleBackground, FloatingActions } from './components/ui';
+import { CustomCursor, LoadingScreen, EasterEgg, AuroraBackground, FloatingActions, CursorTrail } from './components/ui';
 import useViewMode from './hooks/useViewMode';
 
 function AppContent() {
@@ -14,10 +14,11 @@ function AppContent() {
     <>
       <LoadingScreen onComplete={() => setIsLoaded(true)} />
       <EasterEgg />
-      {isModernView && <ParticleBackground />}
+      {isModernView && <AuroraBackground />}
+      {isModernView && <CursorTrail />}
       <CustomCursor />
       <Header />
-      <main className="mt-12 md:mt-16">
+      <main className={`mt-12 md:mt-16 ${isModernView ? 'text-white' : ''}`}>
         <Home />
         <About />
         <Experience />
