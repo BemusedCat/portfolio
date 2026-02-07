@@ -3,7 +3,7 @@ import { ThemeProvider } from './hooks/useTheme';
 import { ViewModeProvider } from './hooks/useViewMode';
 import { Header, Footer } from './components/layout';
 import { Home, About, Experience, Education, Skills, Contact } from './components/sections';
-import { CustomCursor, LoadingScreen, EasterEgg, ParticleBackground } from './components/ui';
+import { CustomCursor, LoadingScreen, EasterEgg, ParticleBackground, FloatingActions } from './components/ui';
 import useViewMode from './hooks/useViewMode';
 
 function AppContent() {
@@ -26,6 +26,7 @@ function AppContent() {
         <Contact />
       </main>
       <Footer />
+      <FloatingActions />
     </>
   );
 }
