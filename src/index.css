@@ -311,6 +311,11 @@
   background-clip: text;
 }
 
+@keyframes interference {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
 /* Easter egg party mode */
 .party-mode {
   animation: hue-rotate 2s linear infinite;

@@ -18,3 +18,4 @@ export { default as AuroraBackground } from './AuroraBackground';
 export { default as NeonTitle } from './NeonTitle';
 export { default as TextScramble } from './TextScramble';
 export { default as CursorTrail } from './CursorTrail';
+export { default as HolographicCard } from './HolographicCard';
