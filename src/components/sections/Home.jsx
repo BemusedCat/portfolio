@@ -5,8 +5,8 @@ import HeroIllustration from '../svg/HeroIllustration';
 import useIsMobile from '../../hooks/useIsMobile';
 
 const socialLinks = [
-  { icon: 'bxl-linkedin', url: 'https://www.linkedin.com/in/abhigyan-pandey-b6948811a/', label: 'LinkedIn' },
-  { icon: 'bxl-instagram', url: 'https://www.instagram.com/abhimaigyandega/', label: 'Instagram' },
+  { icon: 'bxl-linkedin', url: 'https://www.linkedin.com/in/abhigyann/', label: 'LinkedIn' },
+  { icon: 'bxl-instagram', url: 'https://www.instagram.com/abhigyann22', label: 'Instagram' },
   { icon: 'bxl-github', url: 'https://github.com/BemusedCat', label: 'GitHub' },
 ];
 

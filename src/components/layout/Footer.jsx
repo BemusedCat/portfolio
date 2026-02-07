@@ -1,9 +1,9 @@
 import { SocialLinks } from '../ui';
 
 const socialLinks = [
-  { icon: 'bxl-facebook', url: '#', label: 'Facebook' },
-  { icon: 'bxl-instagram', url: 'https://www.instagram.com/abhimaigyandega/', label: 'Instagram' },
-  { icon: 'bxl-twitter', url: '#', label: 'Twitter' },
+  { icon: 'bxl-linkedin', url: 'https://www.linkedin.com/in/abhigyann/', label: 'LinkedIn' },
+  { icon: 'bxl-instagram', url: 'https://www.instagram.com/abhigyann22', label: 'Instagram' },
+  { icon: 'bxl-github', url: 'https://github.com/BemusedCat', label: 'GitHub' },
 ];
 
 export default function Footer() {
