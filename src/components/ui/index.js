@@ -9,3 +9,4 @@ export { default as CustomCursor } from './CustomCursor';
 export { default as LoadingScreen } from './LoadingScreen';
 export { default as ScrollProgress } from './ScrollProgress';
 export { default as TerminalIntro } from './TerminalIntro';
+export { default as EasterEgg } from './EasterEgg';
