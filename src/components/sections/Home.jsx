@@ -1,8 +1,12 @@
-import { useRef, useState } from 'react';
+import { useRef, useState, Suspense, lazy } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Button, SocialLinks, Typewriter, TerminalIntro, SpotifyWidget } from '../ui';
 import HeroIllustration from '../svg/HeroIllustration';
 import useIsMobile from '../../hooks/useIsMobile';
+import useViewMode from '../../hooks/useViewMode';
+
+// Lazy load 3D component for performance
+const Hero3D = lazy(() => import('../3d/Hero3D').then(m => ({ default: m.default })));
 
 const socialLinks = [
   { icon: 'bxl-linkedin', url: 'https://www.linkedin.com/in/abhigyann/', label: 'LinkedIn' },
@@ -10,10 +14,19 @@ const socialLinks = [
   { icon: 'bxl-github', url: 'https://github.com/BemusedCat', label: 'GitHub' },
 ];
 
+function Hero3DFallback() {
+  return (
+    <div className="w-full h-full min-h-[300px] flex items-center justify-center">
+      <div className="w-16 h-16 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+    </div>
+  );
+}
+
 export default function Home() {
   const [terminalComplete, setTerminalComplete] = useState(false);
   const sectionRef = useRef(null);
   const isMobile = useIsMobile();
+  const { isModernView } = useViewMode();
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -33,49 +46,47 @@ export default function Home() {
       className="min-h-[calc(100vh-3rem)] md:min-h-screen grid md:grid-cols-2 gap-4 items-center pt-12 md:pt-0 bd-container"
     >
       <div className="order-2 md:order-1">
-        {/* Terminal intro - shows before main content */}
         <TerminalIntro onComplete={() => setTerminalComplete(true)} />
 
-        {/* Main content - appears after terminal */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: terminalComplete ? 1 : 0 }}
           transition={{ duration: 0.5 }}
         >
-        <motion.h1
-          className="text-3xl md:text-6xl font-bold mb-10"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          Hi,<br />
-          I'm <span className="text-primary">Abhigyan</span><br />
-          <Typewriter
-            words={['Freelancer', 'Software Engineer', 'Web Developer']}
-            period={2000}
-          />
-        </motion.h1>
+          <motion.h1
+            className="text-3xl md:text-6xl font-bold mb-10"
+            initial={{ opacity: 0, y: -50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            Hi,<br />
+            I'm <span className={isModernView ? 'gradient-text' : 'text-primary'}>Abhigyan</span><br />
+            <Typewriter
+              words={['Freelancer', 'Software Engineer', 'Web Developer']}
+              period={2000}
+            />
+          </motion.h1>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        >
-          <Button href="#contact">Contact</Button>
-        </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <Button href="#contact">Contact</Button>
+          </motion.div>
 
-        <div className="mt-8 md:mt-0 md:pt-8">
-          <SocialLinks
-            links={socialLinks}
-            size="lg"
-            direction="horizontal"
-            className="md:flex-row"
-          />
-        </div>
+          <div className="mt-8 md:mt-0 md:pt-8">
+            <SocialLinks
+              links={socialLinks}
+              size="lg"
+              direction="horizontal"
+              className="md:flex-row"
+            />
+          </div>
 
-        <div className="mt-6">
-          <SpotifyWidget />
-        </div>
+          <div className="mt-6">
+            <SpotifyWidget />
+          </div>
         </motion.div>
       </div>
 
@@ -86,7 +97,13 @@ export default function Home() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8, delay: 0.4 }}
       >
-        <HeroIllustration className="w-full max-w-md md:max-w-lg" />
+        {isModernView ? (
+          <Suspense fallback={<Hero3DFallback />}>
+            <Hero3D className="w-full max-w-md md:max-w-lg" />
+          </Suspense>
+        ) : (
+          <HeroIllustration className="w-full max-w-md md:max-w-lg" />
+        )}
       </motion.div>
     </section>
   );
