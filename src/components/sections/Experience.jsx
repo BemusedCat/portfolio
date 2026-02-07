@@ -5,7 +5,7 @@ import { SectionTitle } from '../ui';
 const experiences = [
   {
     company: 'CrowdStrike',
-    logo: 'CS',
+    icon: 'bxs-shield',
     color: 'bg-red-600',
     type: 'Full-time',
     threshold: 0.15,
@@ -20,7 +20,7 @@ const experiences = [
   },
   {
     company: 'Oracle',
-    logo: 'O',
+    icon: 'bxs-cloud',
     color: 'bg-red-500',
     type: 'Full-time · 3 yrs 8 mos',
     threshold: 0.4,
@@ -48,7 +48,7 @@ const experiences = [
   },
   {
     company: 'Paytm',
-    logo: 'P',
+    icon: 'bxs-wallet',
     color: 'bg-sky-500',
     type: 'Internship',
     threshold: 0.8,
@@ -193,12 +193,12 @@ function ExperienceCard({ exp, scrollYProgress, isLast }) {
       className={`relative pl-12 ${!isLast ? 'pb-10' : ''}`}
       style={{ opacity, x, scale }}
     >
-      {/* Timeline dot with logo */}
+      {/* Timeline dot with icon */}
       <motion.div
-        className={`absolute left-0 w-8 h-8 rounded-full ${exp.color} flex items-center justify-center text-white text-xs font-bold z-10`}
+        className={`absolute left-0 w-8 h-8 rounded-full ${exp.color} flex items-center justify-center text-white text-base z-10`}
         style={{ boxShadow: dotGlow }}
       >
-        {exp.logo}
+        <i className={`bx ${exp.icon}`}></i>
       </motion.div>
 
       {/* Company header */}
