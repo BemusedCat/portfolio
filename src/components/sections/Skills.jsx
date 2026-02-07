@@ -38,7 +38,7 @@ export default function Skills() {
       )}
 
       {isModernView ? (
-        <div className="flex flex-wrap justify-center gap-8">
+        <div className="flex flex-wrap justify-center items-start gap-8">
           {skills.map((skill) => (
             <SkillBar
               key={skill.name}

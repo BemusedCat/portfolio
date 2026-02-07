@@ -7,7 +7,7 @@ export default function SkillBar({ name, icon, percentage }) {
   if (isModernView) {
     return (
       <motion.div
-        className="relative group"
+        className="relative group flex flex-col items-center w-40"
         whileHover={{ scale: 1.1 }}
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -15,7 +15,7 @@ export default function SkillBar({ name, icon, percentage }) {
         transition={{ duration: 0.5 }}
       >
         <div
-          className="w-20 h-20 rounded-full flex items-center justify-center relative"
+          className="w-20 h-20 rounded-full flex items-center justify-center"
           style={{
             background: `radial-gradient(circle, rgba(0,242,254,0.3) 0%, transparent 70%)`,
             boxShadow: `0 0 ${percentage / 2}px var(--neon-cyan), inset 0 0 20px rgba(0,242,254,0.2)`,
@@ -23,8 +23,8 @@ export default function SkillBar({ name, icon, percentage }) {
         >
           <i className={`bx ${icon} text-3xl neon-text`}></i>
         </div>
-        <p className="text-center text-sm mt-2 neon-text-green">{name}</p>
-        <p className="text-center text-xs opacity-60">{percentage}%</p>
+        <p className="text-center text-sm mt-3 neon-text-green leading-tight">{name}</p>
+        <p className="text-center text-xs opacity-60 mt-1">{percentage}%</p>
       </motion.div>
     );
   }
