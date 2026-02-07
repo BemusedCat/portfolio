@@ -99,9 +99,9 @@ function RoleCard({ role, scrollYProgress, roleThreshold, isLast }) {
       className={`relative ${!isLast ? 'pb-6' : ''}`}
       style={{ opacity, x, scale }}
     >
-      {/* Role dot with glow */}
+      {/* Role dot with glow - aligned with timeline at left-[5px] */}
       <motion.div
-        className="absolute -left-[23px] top-1.5 w-3 h-3 rounded-full bg-primary z-10"
+        className="absolute -left-[27px] top-1 w-3 h-3 rounded-full bg-primary z-10"
         style={{ boxShadow: glowShadow }}
       />
 
@@ -131,16 +131,16 @@ function RolesTimeline({ roles, scrollYProgress, baseThreshold, skills }) {
   );
 
   return (
-    <div className="relative ml-2 pl-6">
+    <div className="relative ml-2 pl-8">
       {/* Roles timeline background */}
       {hasMultipleRoles && (
         <>
-          <div className="absolute left-0 top-2 bottom-2 w-0.5 bg-gray-200 dark:bg-gray-700" />
+          <div className="absolute left-[5px] top-3 w-0.5 bg-gray-200 dark:bg-gray-700" style={{ height: 'calc(100% - 3.5rem)' }} />
           <motion.div
-            className="absolute left-0 top-2 w-0.5 bg-gradient-to-b from-primary to-blue-400 origin-top"
+            className="absolute left-[5px] top-3 w-0.5 bg-gradient-to-b from-primary to-blue-400 origin-top"
             style={{
               scaleY: timelineScale,
-              height: 'calc(100% - 1rem)',
+              height: 'calc(100% - 3.5rem)',
             }}
           />
         </>
