@@ -1,6 +1,6 @@
 import { ThemeProvider } from './hooks/useTheme';
 import { Header, Footer } from './components/layout';
-import { Home, About, Experience, Skills, Contact } from './components/sections';
+import { Home, About, Experience, Education, Skills, Contact } from './components/sections';
 import { CustomCursor } from './components/ui';
 
 export default function App() {
@@ -12,6 +12,7 @@ export default function App() {
         <Home />
         <About />
         <Experience />
+        <Education />
         <Skills />
         <Contact />
       </main>
