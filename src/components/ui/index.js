@@ -16,3 +16,4 @@ export { default as ParticleBackground } from './ParticleBackground';
 export { default as FloatingActions } from './FloatingActions';
 export { default as AuroraBackground } from './AuroraBackground';
 export { default as NeonTitle } from './NeonTitle';
+export { default as TextScramble } from './TextScramble';
